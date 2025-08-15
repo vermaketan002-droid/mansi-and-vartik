@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For Mansi — From Vartik 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b14;         /* midnight */
+      --ink:#f1f5f9;        /* soft white */
+      --rose:#ff7aa2;       /* rosy pink */
+      --blush:#ffd1dc;      /* blush */
+      --violet:#8a7cff;     /* violet */
+      --gold:#ffd166;       /* champagne */
+      --glass: rgba(255,255,255,0.06);
+      --shadow: 0 10px 40px rgba(0,0,0,.5);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif; color:var(--ink);
+      background: var(--bg);
+      overflow-x:hidden;
+    }
+
+    /* Animated rainbow backdrop */
+    .rainbow{position:fixed; inset:0; z-index:-2; filter:brightness(1.05) saturate(1.15);}
+    .rainbow:before, .rainbow:after{content:""; position:absolute; inset:-20%;}
+    /* Layer 1: conic rainbow slowly rotating */
+    .rainbow:before{
+      background: conic-gradient(from 0deg,
+        #ff0040, #ff7a00, #ffd400, #25d366, #00c2ff, #6f00ff, #ff00ea, #ff0040);
+      animation: swirl 36s linear infinite;
+      filter: blur(70px) opacity(.45);
+    }
+    /* Layer 2: soft moving radial blend */
+    .rainbow:after{
+      background:
+        radial-gradient(60% 90% at 80% 20%, rgba(255,255,255,.18), transparent 60%),
+        radial-gradient(60% 90% at 20% 80%, rgba(255,255,255,.14), transparent 60%);
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    @keyframes swirl{ to{ transform: rotate(360deg);} }
+    @keyframes drift{ 0%{ transform: translate(-2%, -2%) } 100%{ transform: translate(2%, 2%) } }
+
+    /* Subtle star specks */
+    .stars{position:fixed; inset:0; pointer-events:none; z-index:-1;}
+    .star{position:absolute; width:2px; height:2px; background:linear-gradient(180deg, #fff, rgba(255,255,255,.2)); border-radius:50%; opacity:.8; filter:drop-shadow(0 0 6px rgba(255,255,255,.7));}
+
+    header.hero{min-height:100svh; display:grid; place-items:center; text-align:center; padding:32px; position:relative;}
+    .glass{backdrop-filter: blur(12px); background:var(--glass); border:1px solid rgba(255,255,255,.12); border-radius:28px; box-shadow:var(--shadow);}
+
+    .hero-card{ max-width:960px; padding:40px 24px; }
+    .hero h1{ font-family:'Great Vibes', cursive; font-size:clamp(46px,8vw,92px); line-height:1.05; margin:0 0 10px; color:#fff; text-shadow:0 2px 18px rgba(0,0,0,.4); }
+    .hero p.lead{ margin:0 auto 20px; max-width:50ch; font-size:clamp(16px,2.2vw,20px); color:#eef2ff }
+
+    .cta{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:16px}
+    .btn{ --g:linear-gradient(135deg, var(--rose), var(--violet));
+      border:none; color:#0b0b14; font-weight:700; padding:14px 22px; border-radius:16px;
+      background:linear-gradient(#fff,#fff) padding-box, var(--g) border-box; border: 2px solid transparent; cursor:pointer; transition:.25s transform, .25s filter; }
+    .btn:hover{ transform: translateY(-1px) scale(1.02); filter:saturate(1.1); }
+    .btn:active{ transform: translateY(1px) scale(.98); }
+    .btn.secondary{ color:#fff; background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06)); border:1px solid rgba(255,255,255,.18);} 
+
+    /* Floating hearts */
+    .hearts{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .heart{ position:absolute; width:18px; height:18px; transform:rotate(45deg); animation:float 10s linear infinite; opacity:.75; }
+    .heart:before, .heart:after{ content:""; position:absolute; width:18px; height:18px; background:currentColor; border-radius:50%; }
+    .heart:before{ top:-9px; left:0; }
+    .heart:after{ left:-9px; top:0; }
+    @keyframes float{ 
+      0%{ transform:translateY(0) scale(.8) rotate(45deg); opacity:0 }
+      10%{ opacity:.85 }
+      100%{ transform:translateY(-120vh) scale(1.4) rotate(45deg); opacity:0 }
+    }
+
+    /* Photo card */
+    .photo-wrap{ display:grid; place-items:center; margin:18px auto 6px; }
+    .frame{ width:min(82vw, 420px); aspect-ratio: 1/1; border-radius:28px; overflow:hidden; border:1px solid rgba(255,255,255,.25); box-shadow:0 20px 60px rgba(0,0,0,.45); position:relative; }
+    .frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .frame .tag{ position:absolute; left:12px; bottom:12px; background:rgba(0,0,0,.45); padding:6px 10px; border-radius:12px; font-size:12px; letter-spacing:.3px }
+
+    /* Yes/No playful buttons */
+    .playful{ display:flex; gap:14px; justify-content:center; margin-top:14px }
+    .no-btn{ position:relative }
+
+    /* Modal */
+    .modal{ position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.55); z-index:60 }
+    .modal .inner{ max-width:640px; margin:20px; }
+
+    footer{ padding:40px 18px 90px; opacity:.9; text-align:center; }
+
+    canvas#confetti{ position:fixed; inset:0; pointer-events:none; z-index:50 }
+  </style>
+</head>
+<body>
+  <div class="rainbow"></div>
+  <div class="stars" id="stars"></div>
+  <canvas id="confetti"></canvas>
+
+  <header class="hero">
+    <div class="hero-card glass">
+      <div style="display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; background:linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.06)); border:1px solid rgba(255,255,255,.16); font-size:12px; letter-spacing:.3px;">💌 A note from <strong style="letter-spacing:.5px; margin-left:4px">Vartik</strong></div>
+      <h1>Hey Mansi, I have a tiny-big question…</h1>
+      <p class="lead">Somewhere between our stupid jokes and late-night chats, you became my favorite part of the day. So here goes—</p>
+
+      <div class="photo-wrap">
+        <div class="frame">
+          <!-- Replace the src with your real photo path -->
+          <img src="c:\Users\Computer Planet\Downloads\WhatsApp Image 2025-08-15 at 1.49.01 PM (1).jpeg" alt="Vartik & Mansi" />
+          <div class="tag">V & M ✨</div>
+        </div>
+      </div>
+
+      <p class="lead" style="margin-top:10px; font-weight:600">Mansi, will you be my girlfriend?</p>
+
+      <div class="hearts" id="hearts"></div>
+
+      <div class="playful">
+        <button class="btn" id="yesBtn">Yes 💖</button>
+        <button class="btn secondary no-btn" id="noBtn">Umm…</button>
+      </div>
+
+      <div class="cta">
+        <button class="btn secondary" id="musicBtn">Play tiny melody</button>
+      </div>
+    </div>
+  </header>
+
+  <footer>
+    <p style="opacity:.85">Made with care by Vartik • for Mansi</p>
+  </footer>
+
+  <!-- Letter Modal (short & cute) -->
+  <div class="modal" id="letterModal">
+    <div class="inner">
+      <div class="glass" style="padding:26px; border-radius:24px">
+        <h2 style="font-family:'Great Vibes'; font-size:42px; margin:0 0 8px">Just one more thing…</h2>
+        <p style="margin:0 0 8px">Dear Mansi,</p>
+        <p style="margin:0 0 8px">I like you. maine past me jo bhi kiya hai, i am really sorry about it
+        <p style="margin:0 0 8px">I know I am not the best person, but I will try to be the best for you.</style>
+        <p style="margin:0 0 8px">i wanna be with you, i love you</p>
+        <p style="font-weight:700; margin:8px 0 0">— Vartik</p>
+        <div class="cta" style="margin-top:14px">
+          <button class="btn" id="closeLetter">Aww 🥺</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Stars
+    const stars = document.getElementById('stars');
+    for (let i=0; i<120; i++){
+      const s = document.createElement('div'); s.className='star';
+      const size = Math.random()*2.2 + .4;
+      s.style.width = s.style.height = size+'px';
+      s.style.left = Math.random()*100+'%'; s.style.top = Math.random()*100+'%';
+      s.style.opacity = Math.random()*0.9 + 0.1;
+      stars.appendChild(s);
+    }
+
+    // Floating hearts
+    const heartColors = ['#ff9bb8','#ff7aa2','#ffd1dc','#c3b8ff'];
+    const hearts = document.getElementById('hearts');
+    function spawnHeart(){
+      const h = document.createElement('div'); h.className='heart';
+      const color = heartColors[Math.floor(Math.random()*heartColors.length)];
+      h.style.color = color; h.style.left = Math.random()*100+'%'; h.style.bottom = '-40px';
+      h.style.animationDuration = (8 + Math.random()*6)+'s';
+      hearts.appendChild(h); setTimeout(()=>h.remove(), 16000);
+    }
+    setInterval(spawnHeart, 420);
+
+    // Playful "No" button
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseenter', moveNo);
+    function moveNo(){
+      const b = noBtn.getBoundingClientRect();
+      const x = Math.random() * (window.innerWidth - b.width - 20) + 10;
+      const y = Math.random() * (window.innerHeight - b.height - 20) + 10;
+      noBtn.style.position='fixed'; noBtn.style.left = x+'px'; noBtn.style.top = y+'px';
+    }
+
+    // Confetti hearts
+    const confetti = document.getElementById('confetti');
+    const ctx = confetti.getContext('2d');
+    function resize(){ confetti.width = innerWidth; confetti.height = innerHeight; }
+    addEventListener('resize', resize); resize();
+
+    let particles=[];
+    function heartPath(c){ c.moveTo(0,-6); c.bezierCurveTo(6,-16, 22,-12, 22,4); c.bezierCurveTo(22,20, 0,28, 0,40); c.bezierCurveTo(0,28, -22,20, -22,4); c.bezierCurveTo(-22,-12, -6,-16, 0,-6); }
+
+    function popConfetti(x=innerWidth/2, y=innerHeight/2, n=140){
+      for(let i=0;i<n;i++){
+        particles.push({ x, y, vx:(Math.random()-0.5)*6, vy:(Math.random()-0.9)*7-2, r: 6+Math.random()*8, a:1, rot:Math.random()*Math.PI, col:heartColors[Math|Math.random()*heartColors.length] });
+      }
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,confetti.width, confetti.height);
+      particles.forEach(p=>{
+        p.x += p.vx; p.y += p.vy; p.vy += 0.05; p.a *= 0.985; p.rot += 0.08;
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.globalAlpha = Math.max(p.a,0);
+        ctx.fillStyle = p.col; ctx.beginPath();
+        ctx.scale(0.5,0.5); let c=ctx; c.beginPath(); heartPath(c); c.fill();
+        ctx.restore();
+      });
+      particles = particles.filter(p=> p.a>0 && p.y<innerHeight+40);
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    // Melody using WebAudio
+    const melody = [ {f:392,d:0.22},{f:440,d:0.18},{f:494,d:0.22},{f:523,d:0.34}, {f:494,d:0.18},{f:440,d:0.22},{f:392,d:0.34}, {f:523,d:0.22},{f:587,d:0.18},{f:659,d:0.44} ];
+    let audioCtx;
+    function playMelody(){
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      let t = audioCtx.currentTime;
+      melody.forEach((n)=>{
+        const o = audioCtx.createOscillator(); const g = audioCtx.createGain();
+        o.type = 'sine'; o.frequency.value = n.f; g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.25, t+0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t+n.d);
+        o.connect(g).connect(audioCtx.destination); o.start(t); o.stop(t+n.d+0.02);
+        t += n.d*1.05;
+      });
+    }
+    document.getElementById('musicBtn').onclick = playMelody;
+
+    // Letter modal
+    const modal = document.getElementById('letterModal');
+    const closeLetter = document.getElementById('closeLetter');
+    closeLetter.onclick = ()=> modal.style.display='none';
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.style.display='none'; });
+
+    // YES button -> confetti + open cute letter
+    document.getElementById('yesBtn').onclick = (e)=>{
+      const rect = e.target.getBoundingClientRect(); const x = rect.left + rect.width/2, y = rect.top;
+      popConfetti(x,y,240);
+      setTimeout(()=>{ modal.style.display='grid'; }, 350);
+    };
+  </script>
+</body>
+</html>
+.heart {
+  position: absolute;
+  color: red;
+  font-size: 20px;
+  animation: float 5s linear forwards;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px);
+    opacity: 0; /* Smooth fade-out */
+  }
+}
